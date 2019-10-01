@@ -18,6 +18,14 @@ app.set('views', viewPath);
 app.use(express.static("./public")); 
 app.use('/insert-comment', router); 
 
+const getDate = () => {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; 
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let date = new Date(); 
+    let result = days[date.getDay()] + ' ' + months[date.getMonth()] + ' ' + date.getFullYear(); 
+    return result; 
+}
+
 app.get('', (req, res) => {
     var comments = []; 
 
@@ -36,9 +44,12 @@ app.get('', (req, res) => {
 }); 
 
 app.get('/insert-comment', (req, res) => {
+    const date = getDate(); 
+
     const comment_Info = {
         comment: req.query.comment, 
-        username: req.query.username
+        username: req.query.username, 
+        date
     }
 
     mongo.connect(mongoUrl, function(err, client) {
