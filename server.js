@@ -1,15 +1,22 @@
+'use strict'
+
+const hbs = require('hbs');     
 const express = require('express'); 
-
 const app = express(); 
+const path = require('path'); 
 
-// use a view engine don't use static please. 
+const port = 8080; 
 
+const viewPath = path.join(__dirname, "/templates/views")
+
+app.set('view engine', 'hbs'); 
+app.set('views', viewPath); 
 app.use(express.static("./public")); 
 
-app.get("/", (req, res) => {
-    console.log(req.body); 
+app.get('', (req, res) => {
+    res.render("index", {}); 
 }); 
 
-app.listen(8080, () => {
+app.listen(port, () => {
     console.log("app is listening on port 8080"); 
-})
+}); 

@@ -1,0 +1,41 @@
+body{
+    font-family: 'Nunito', sans-serif;
+}
+h1{
+    padding-top: 100px;
+    padding-bottom: 20px;
+    position: relative;
+}
+#container{
+    margin-right: 25%; 
+    margin-left: 25%;
+}
+p{
+    font-size: 18px; 
+    margin-right: 20px; 
+}
+#title{ 
+    padding-bottom: 20px; 
+}
+article{
+    margin-left: 20px; 
+    margin-right: 20px; 
+}
+#full-page{
+    padding-bottom: 100px; 
+}
+#comment-container{
+    background-color: #ededed;  
+    padding: 1px 1px 0px 1px; 
+    margin-left: 20px; 
+    margin-right: 20px; 
+}
+#comments{ 
+    width: 100%;
+    background-color: white; 
+}
+#comment{
+    margin: 20px 20px 10px 20px; 
+    width: 90%; 
+    font-family: 'Nunito', sans-serif;
+}

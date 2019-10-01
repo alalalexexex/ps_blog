@@ -1,7 +1,6 @@
 {
   "name": "ps_blog",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,6 +9,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "express": "^4.17.1",
+    "hbs": "^4.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alalalexexex/ps_blog.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/alalalexexex/ps_blog/issues"
+  },
+  "homepage": "https://github.com/alalalexexex/ps_blog#readme",
+  "description": ""
 }
