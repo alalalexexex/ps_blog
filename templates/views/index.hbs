@@ -54,16 +54,26 @@
                     </p>
                 </article>
                 <div id="comment-container">
-                    <div id="comments">
-                        <textarea id="comment" placeholder="Thoughts?" rows="5" cols="90"></textarea>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">@</span>
+                    <form action="/insert-comment" id="comment-form">
+                        <div id="comments">
+                            <textarea id="comment" placeholder="Thoughts?" rows="5" cols="90" name="comment" required></textarea>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">@</span>
+                                </div>
+                                <input required pattern="^[^\s]+$" type="text" class="form-control" id="username" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
-                    </div>
-                    <button type="button" class="btn btn-secondary btn-block">Comment</button>
+                    </form>
+                    <button type="submit" form="comment-form" class="btn btn-secondary btn-block">Comment</button>
+                </div>
+                <div>
+                    {{# each items}}
+                        <p>
+                            {{this.username}}:
+                            {{this.comment}}
+                        </p>
+                    {{/each}}
                 </div>
             </div>
         </div>

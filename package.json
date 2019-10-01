@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "hbs": "^4.0.5"
+    "hbs": "^4.0.5",
+    "mongodb": "^3.3.2"
   },
   "repository": {
     "type": "git",
