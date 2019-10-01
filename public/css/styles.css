@@ -14,6 +14,9 @@ p{
     font-size: 18px; 
     margin-right: 20px; 
 }
+#author{
+    font-size: 20px; 
+}
 #title{ 
     padding-bottom: 20px; 
 }
@@ -27,6 +30,7 @@ article{
 #comment-container{
     background-color: #ededed;  
     padding: 1px 1px 0px 1px; 
+    margin-top: 60px; 
     margin-left: 20px; 
     margin-right: 20px; 
 }
@@ -35,7 +39,8 @@ article{
     background-color: white; 
 }
 #comment{
+    border-color: #d1d1d1;
     margin: 20px 20px 10px 20px; 
-    width: 90%; 
+    width: 95%; 
     font-family: 'Nunito', sans-serif;
 }
