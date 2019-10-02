@@ -69,12 +69,17 @@
                     <button id="submit" type="submit" form="comment-form" class="btn btn-secondary btn-block">Comment</button>
                 </div>
                 <div id="all-comments">
-                    {{# each items}}
+                    {{# each comments}}
+                       <div id="user-name-comment">
+                                {{this.username}}:
+                        </div>
                         <p class="each-comment">
-                            {{this.username}}:
                             {{this.comment}}
                             {{this.date}}
                         </p>
+                        <div id="delete">
+                            <a>delete</a>
+                        </div>
                     {{/each}}
                 </div>
             </div>

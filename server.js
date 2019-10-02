@@ -37,7 +37,7 @@ app.get('', (req, res) => {
             comments.push(doc); 
             console.log(comments); 
         }, () => {
-            res.render('', {items: comments}); 
+            res.render('', {comments}); 
         }); 
     }); 
 
