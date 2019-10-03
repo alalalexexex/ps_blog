@@ -52,6 +52,12 @@ app.get('/insert-comment', (req, res) => {
         date
     }
 
+    // play with this more invalid status code 
+    // let unRegex = /^[^\s]+$/; 
+    // if(!unRegex.exec(comment_Info.username)){
+    //     return res.redirect('../', {update: "username must have not have spaces!!"}); 
+    // }
+
     mongo.connect(mongoUrl, function(err, client) {
         if(err) return console.log('error connecting to mongo'); 
         const db = client.db(dbName); 
