@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    {{>header}}
+    <body>
+        <div id="sign-in-form">
+            <form id="signup-form" action="/signup-post" method="post">
+                <input class="form-control" id="signup-username" name="username" type="text" placeholder="Username">
+                <input class="form-control" id="signup-password" name="OnePassword" type="password" placeholder="password">
+                <input class="form-control" id="signup-password" name="TwoPassword" type="password" placeholder="confirm password">
+                <button type="submit" form="signup-form" class="btn btn-secondary btn-block">Sign Up</button>
+            </form>
+        </div>
+    {{>footer}}
+    </body>
+</html>

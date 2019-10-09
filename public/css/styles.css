@@ -92,3 +92,18 @@ article{
 #delete{
     margin-left: 10%;
 }
+
+h2{
+    margin-top: 2%; 
+    margin-left: 70%; 
+}
+#sign-in-form{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;        
+    width:546px;
+    height:265px;
+    margin-left: -273px; /*half width*/
+    margin-top: -132px; /*half height*/
+}

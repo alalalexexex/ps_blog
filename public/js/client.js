@@ -1,10 +1,6 @@
-// const comments = document.getElementById('all-comments'); 
-// const button = document.getElementById('submit'); 
-// const newComment = document.createElement('p'); 
-// const text = document.getElementById('')
 
-// // make it so comments don't refresh all of the time ?
+function redirect(){
+    window.location.href = "http://localhost:8080/login"; 
+}
 
-// button.addEventListener('click', () => {
-
-// }); 
+console.log("i'm here"); 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    {{>header}}
+    <body>
+        <div id="sign-in-form">
+            <form action="/login-check" id="login-form" method="post">
+                <input class="form-control" name="username" id="login-username" type="text" placeholder="Username">
+                <input class="form-control" name="password" id="login-password" type="password" placeholder="password">
+                <button type="submit" form="login-form" class="btn btn-secondary btn-block">Login</button>
+            </form>
+            <div>
+                Don't have an account? <a href="../signup">Sign up</a>
+            </div>
+        </div>
+    {{>footer}}
+    </body>
+</html>
