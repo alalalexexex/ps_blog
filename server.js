@@ -16,7 +16,14 @@ const viewPath = path.join(__dirname, "/templates/views")
 // setup for the rendering and routing
 app.set('view engine', 'hbs'); 
 app.set('views', viewPath); 
-hbs.registerPartials('./templates/partials')
+
+// configure handlebars setup
+hbs.registerPartials('./templates/partials'); 
+hbs.registerHelper('ifEquals', function(arg1, arg2, options){
+    console.log(arg1, arg2);
+    return (arg1 === arg2) ? options.fn(this) : options.inverse(this); 
+}); 
+
 app.use(express.static("./public")); 
 app.use(bodyParser.urlencoded({extended: false})); 
 app.use(bodyParser.json()); 
@@ -40,7 +47,11 @@ app.get('', (req, res) => {
         const documents = client.db(dbName).collection('comments').find();   
         documents.forEach((doc, err) => {
             if(err) return console.log("couldn't find document"); 
-            comments.push(doc); 
+            if(doc.username === currentUser){
+                comments.push({doc, isEqual: true}); 
+            }else{
+                comments.push({doc, isEqual: false}); 
+            } 
         }, () => {
             res.render('', {comments, loggedIn, currentUser});
         }); 
@@ -54,6 +65,10 @@ app.get('/login', (req, res) => {
 
 app.get('/signup', (req, res) => {
     res.render('signup'); 
+}); 
+
+app.post('/delete', (req, res) => {
+
 }); 
 
 app.post('/logout', (req, res) => {
@@ -83,8 +98,9 @@ app.post('/login-check', (req, res) => {
 
 app.post('/signup-post', (req, res) => {
     const pword = req.body.OnePassword;
-    const name = req.body.name; 
+    const name = req.body.username; 
 
+    console.log(name, pword, req.body.TwoPassword); 
     if(req.body.OnePassword != req.body.TwoPassword || !pword || /^\s*$/.test(pword) || !name || /^\s*$/.test(name)){
         res.render('signup'); 
         return; 
@@ -95,7 +111,7 @@ app.post('/signup-post', (req, res) => {
         password: req.body.OnePassword
     }
 
-    mongo.connect(mongoUrl, function(err, client){
+    mongo.connect(mongoUrl, {useNewUrlParser: true}, function(err, client){
         if(err) return console.log('error connecting to mongo');
         const db = client.db(dbName); 
 
@@ -123,12 +139,6 @@ app.post('/insert-comment', (req, res) => {
         date
     }
 
-    // play with this more invalid status code 
-    // let unRegex = /^[^\s]+$/; 
-    // if(!unRegex.exec(comment_Info.username)){
-    //     return res.redirect('../', {update: "username must have not have spaces!!"}); 
-    // }
-
     mongo.connect(mongoUrl, function(err, client) {
         if(err) return console.log('error connecting to mongo'); 
         const db = client.db(dbName); 
@@ -140,9 +150,6 @@ app.post('/insert-comment', (req, res) => {
     res.redirect('../'); 
 }); 
 
-/*
- * create a login field that logs people in
- */ 
 
 app.listen(port, () => {
     console.log("app is listening on port 8080"); 

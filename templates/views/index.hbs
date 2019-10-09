@@ -6,7 +6,6 @@
             {{>login}}
             <div id="container">
                 <h1>
-                    {{this.update}}
                     <div id="title">
                         This is my blog post
                     </div>
@@ -74,17 +73,21 @@
 
                 </div>
                 <div id="all-comments">
-                    {{# each comments}}
+                    {{# each this.comments }}
                        <div id="user-name-comment">
-                                {{this.username}}:
+                                {{this.doc.username}}:
                         </div>
                         <p class="each-comment">
-                            {{this.comment}}
-                            {{this.date}}
+                            {{this.doc.comment}}
+                            {{this.doc.date}}
                         </p>
-                        <div id="delete">
-                            <a>delete</a>
-                        </div>
+                        {{#if this.isEqual}}
+                            <form action="/delete" method="post">
+                                <div id="delete">
+                                    <button type="submit" class="btn btn-primary btn-sm">delete</button>
+                                </div>
+                            </form>
+                        {{/if}}
                     {{/each}}
                 </div>
             </div>
